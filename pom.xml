@@ -1,0 +1,122 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.sebastianbechtold</groupId>
+  <artifactId>JMEToolbox</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+	 
+	 <!-- NOTE: This seems to be required for JME to work -->
+	  <build>
+	    <sourceDirectory>src</sourceDirectory>
+	    <plugins>
+	      <plugin>
+	        <artifactId>maven-compiler-plugin</artifactId>
+	        <version>3.5.1</version>
+	        <configuration>
+	          <source>1.8</source>
+	          <target>1.8</target>
+	        </configuration>
+	      </plugin>
+	    </plugins>
+	  </build>
+   
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<jme3.version>3.1.0-stable</jme3.version>
+		<slf4jVersion>1.6.1</slf4jVersion> 
+		 
+    	<maven.compiler.source>1.8</maven.compiler.source>
+    	<maven.compiler.target>1.8</maven.compiler.target>
+  
+	</properties>
+
+
+	<repositories>
+		<repository>
+			<id>jmonkeyengine</id>
+			<url>http://dl.bintray.com/jmonkeyengine/org.jmonkeyengine</url>
+		</repository>
+
+		<!-- Repository for JME3-JFX by JavaSabr -->
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+		
+		<repository>
+			<id>lemur</id>
+			<url>https://dl.bintray.com/simsilica/Sim-tools/</url>
+		</repository>
+	</repositories>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-math3</artifactId>
+			<version>3.4.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-validator</groupId>
+			<artifactId>commons-validator</artifactId>
+			<version>1.4.0</version>
+		</dependency>
+	
+		<!-- ########### BEGIN JMonkeyEngine Dependencies ########### -->
+		<dependency>
+			<groupId>org.jmonkeyengine</groupId>
+			<artifactId>jme3-core</artifactId>
+			<version>${jme3.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jmonkeyengine</groupId>
+			<artifactId>jme3-desktop</artifactId>
+			<version>${jme3.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jmonkeyengine</groupId>
+			<artifactId>jme3-lwjgl</artifactId>
+			<version>${jme3.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jmonkeyengine</groupId>
+			<artifactId>jme3-effects</artifactId>
+			<version>${jme3.version}</version>
+		</dependency>
+		<!-- ########### END JMonkeyEngine Dependencies ########### -->
+
+		<!-- ############# BEGIN Lemur Dependencies ############# -->
+		 
+		 <dependency>
+			<groupId>com.simsilica</groupId>
+			<artifactId>lemur</artifactId> 
+			<version>1.10.1</version>
+		</dependency>
+			
+			
+		<dependency> 
+			<groupId>org.slf4j</groupId> <artifactId>slf4j-api</artifactId> <version>${slf4jVersion}</version> 
+		</dependency> 
+		
+		
+		<dependency>
+		    <groupId>org.codehaus.groovy</groupId>
+		    <artifactId>groovy-all</artifactId>
+		    <version>2.4.7</version>
+		</dependency>
+		<!-- ############# END Lemur Dependencies ############# -->
+
+		<dependency>
+			<groupId>com.github.JavaSaBr</groupId>
+			<artifactId>JME3-JFX</artifactId>
+			<version>1.5.2</version>
+		</dependency>
+	</dependencies>
+	
+</project>
