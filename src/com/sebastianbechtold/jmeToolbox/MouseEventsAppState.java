@@ -40,10 +40,8 @@ public class MouseEventsAppState extends AbstractAppState {
 	private ActionListener mActionListener = new ActionListener() {
 		@Override
 		public void onAction(String name, boolean keyPressed, float tpf) {
-
-			// TODO: 1 Check for spatial under mouse / yes or no?
-
-			// NOTE: It looks like click events are always registered
+		
+			// NOTE: Click events are always registered, even if there is no spatial under the mouse
 			
 			if (mGeometryUnderMouse != null) {
 				if (keyPressed) {
@@ -107,18 +105,8 @@ public class MouseEventsAppState extends AbstractAppState {
 
 		Vector2f mouseCoords = mApp.getInputManager().getCursorPosition();
 
-		//mApp.getInputManager().onMouseMotionEvent(evt);
-		
-		//System.out.println(mouseCoords.toString());
-		
-		// TODO: 1 Fix wrong ray direction that breaks picking at larger distances
-
 		Ray ray = new Ray(cam.getWorldCoordinates(mouseCoords, 0),
-				cam.getWorldCoordinates(mouseCoords, 1).subtractLocal(cam.getWorldCoordinates(mouseCoords, 0)).normalizeLocal());
-
-		
-		
-		
+				cam.getWorldCoordinates(mouseCoords, 1).subtractLocal(cam.getWorldCoordinates(mouseCoords, 0)).normalizeLocal());		
 
 		Vector3f click3d = cam.getWorldCoordinates(new Vector2f(mouseCoords.x, mouseCoords.y), 0f).clone();
 
@@ -140,12 +128,6 @@ public class MouseEventsAppState extends AbstractAppState {
 	public void update(float tpf) {
 
 		mCollisionResults = mousePick(mMousePickRootNode);
-
-		// TODO: 1 Understand why picking seems to be distance-limited
-//		System.out.println(mCollisionResults.size());
-
-		
-		
 
 		CollisionResult closest = mCollisionResults.getClosestCollision();
 		

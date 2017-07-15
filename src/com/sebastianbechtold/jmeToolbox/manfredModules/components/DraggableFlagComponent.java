@@ -1,4 +1,4 @@
-package com.sebastianbechtold.jmeToolbox.manfredModules;
+package com.sebastianbechtold.jmeToolbox.manfredModules.components;
 
 import com.sebastianbechtold.manfred.IManfredComponent;
 

@@ -8,12 +8,12 @@ import com.sebastianbechtold.jmeToolbox.eventTypes.JmeSpatialClickedLeft;
 import com.sebastianbechtold.jmeToolbox.eventTypes.JmeSpatialClickedRight;
 import com.sebastianbechtold.jmeToolbox.eventTypes.JmeSpatialMouseOut;
 import com.sebastianbechtold.jmeToolbox.eventTypes.JmeSpatialMouseOver;
+import com.sebastianbechtold.jmeToolbox.manfredModules.components.JmeSceneNodeComponent;
 import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpatialCompClickedLeft;
 import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpatialCompClickedRight;
 import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpatialCompMouseOut;
 import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpatialCompMouseOver;
 import com.sebastianbechtold.manfred.EntityManager;
-import com.sebastianbechtold.manfred.IManfredComponent;
 
 public class SpatialMouseEventsSystem extends AbstractManfredJmeSystemAppState {
 
@@ -42,7 +42,7 @@ public class SpatialMouseEventsSystem extends AbstractManfredJmeSystemAppState {
 		//############## BEGIN Go up the scene tree towards the root... ################
 		while (s.getParent() != null) {
 			
-			// TODO 3: OPTIMIZE: Replace the loop over all JmeSceneNodeComponents with with storing 
+			// TODO 4: OPTIMIZE: Replace the loop over all JmeSceneNodeComponents with with storing 
 			// the entity ID as user data in the JmeSceneNodeComponent's "root" node.
 
 			//############## BEGIN ... and loop through all JmeSceneNodeComponents, trying to find one that references the current node ################
@@ -77,19 +77,14 @@ public class SpatialMouseEventsSystem extends AbstractManfredJmeSystemAppState {
 	}
 
 	public void onLmbDownOnSpatial(Object payload) {
-
-		System.out.println("lmb down on spatial!");
-		
+	
 		Spatial s = (Spatial) payload;
 		
 		if (s == null) { System.out.println("start spatial is null!");}
 
 		int id = getJmeSceneNodeComponentForSpatial(s);
 
-		if (id == -1) {
-			return;
-		}
-
+	
 		Easyvents.defaultDispatcher.fire(ManfredJmeSpatialCompClickedLeft.class, id);
 	}
 

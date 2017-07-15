@@ -12,6 +12,8 @@ import com.jme3.scene.Node;
 import com.sebastianbechtold.easyvents.Easyvents;
 import com.sebastianbechtold.jmeToolbox.StaticUtils;
 import com.sebastianbechtold.jmeToolbox.eventTypes.JmeMouseButtonReleasedRight;
+import com.sebastianbechtold.jmeToolbox.manfredModules.components.DraggableFlagComponent;
+import com.sebastianbechtold.jmeToolbox.manfredModules.components.Vec3PosComponent;
 import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpatialCompClickedRight;
 import com.sebastianbechtold.manfred.EntityManager;
 

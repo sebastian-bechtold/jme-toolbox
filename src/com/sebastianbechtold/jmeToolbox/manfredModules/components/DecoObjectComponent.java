@@ -1,4 +1,4 @@
-package com.sebastianbechtold.jmeToolbox.manfredModules;
+package com.sebastianbechtold.jmeToolbox.manfredModules.components;
 
 import java.util.HashMap;
 
@@ -14,10 +14,7 @@ public class DecoObjectComponent extends XmlPersistableComponent implements IMan
 		mModelPath = xml.getAttribute("modelPath");
 	}
 
-	@Override
-	public boolean doPersist() {
-		return true;
-	}
+	
 
 	@Override
 	public HashMap<String, Object> getXmlAttribs() {

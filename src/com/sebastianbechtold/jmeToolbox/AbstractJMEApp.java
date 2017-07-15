@@ -27,7 +27,7 @@ public class AbstractJMEApp extends SimpleApplication {
 
 	public static final Vector3f DIR_UP = new Vector3f(0, 1, 0);
 
-	final int SHADOWMAP_SIZE = 4096;
+	
 
 	protected EntityManager mEm = null;
 
@@ -59,26 +59,11 @@ public class AbstractJMEApp extends SimpleApplication {
 
 		settings.setTitle("JMonkeyEngine");
 		settings.setVSync(false);
-		settings.setResolution(1680, 1050);
-
-		settings.setResolution(1400, 900);
-
-		settings.setResolution(800, 600);
-		settings.setResolution(1280, 1024);
-
-		settings.setSamples(0);
-
-		settings.setResolution(1024, 768);
-
-		settings.setResolution(1280, 720);
-
-		settings.setResolution(1700, 1000);
-
-		settings.setResolution(3840, 1080);
 		
 		settings.setResolution(1280, 720);
-		settings.setResolution(1920, 1080);
 		
+		settings.setResolution(1400, 1000);
+		//settings.setResolution(1920, 1080);
 		
 		settings.setFrameRate(30);
 
@@ -110,6 +95,7 @@ public class AbstractJMEApp extends SimpleApplication {
 	@Override
 	public void simpleInitApp() {
 		
+		// TODO 3: Remove Lemur dependency (currently still used  by Tooltip System)
 		// Initialize Lemur:
 		GuiGlobals.initialize(this);
 		
@@ -162,24 +148,25 @@ public class AbstractJMEApp extends SimpleApplication {
 */
 		// ############################ BEGIN Set up filters ############################
 
+		/*
 		// Filter processor:
 		FilterPostProcessor fpp = new FilterPostProcessor(assetManager);
 		viewPort.addProcessor(fpp);
 
 		// Shadows:
-		/*
+		
 		DirectionalLightShadowFilter dlsf = new DirectionalLightShadowFilter(assetManager, SHADOWMAP_SIZE, 4);
 		dlsf.setLight(sun);
 		dlsf.setEnabled(true);
 		dlsf.setLambda(1f);
 
 		fpp.addFilter(dlsf);
-*/
+
 		// FXAA:
 		FXAAFilter fxaa = new FXAAFilter();
 		fxaa.setEnabled(true);
 		fpp.addFilter(fxaa);
-		
+		*/
 		// ######################### END Set up filters #######################
 
 		// ########################### BEGIN Set up AppStates ############################

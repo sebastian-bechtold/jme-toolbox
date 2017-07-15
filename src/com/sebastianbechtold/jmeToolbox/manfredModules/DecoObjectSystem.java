@@ -7,6 +7,11 @@ import com.jme3.renderer.queue.RenderQueue.ShadowMode;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.sebastianbechtold.jmeToolbox.StaticUtils;
+import com.sebastianbechtold.jmeToolbox.manfredModules.components.DecoObjectComponent;
+import com.sebastianbechtold.jmeToolbox.manfredModules.components.DraggableFlagComponent;
+import com.sebastianbechtold.jmeToolbox.manfredModules.components.JmeSceneNodeComponent;
+import com.sebastianbechtold.jmeToolbox.manfredModules.components.RotateableFlagComponent;
+import com.sebastianbechtold.jmeToolbox.manfredModules.components.Vec3PosComponent;
 import com.sebastianbechtold.manfred.EntityManager;
 
 public class DecoObjectSystem extends AbstractManfredJmeSystemAppState {
@@ -43,10 +48,6 @@ public class DecoObjectSystem extends AbstractManfredJmeSystemAppState {
 		for (int id : mEm.getEntitiesWith(DecoObjectComponent.class)) {
 
 			DecoObjectComponent dc = mEm.getComponent(id, DecoObjectComponent.class);
-
-			// Make entity persistent:
-			PersistFlagComponent pc = new PersistFlagComponent();
-			mEm.setComponent(id, pc);
 
 			
 			// ############ BEGIN Set up SpatialComponent ############

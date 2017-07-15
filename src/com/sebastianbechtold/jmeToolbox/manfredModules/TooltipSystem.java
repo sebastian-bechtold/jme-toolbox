@@ -6,6 +6,7 @@ import com.jme3.app.state.AppStateManager;
 import com.jme3.math.Vector2f;
 import com.jme3.scene.Spatial.CullHint;
 import com.sebastianbechtold.easyvents.Easyvents;
+import com.sebastianbechtold.jmeToolbox.manfredModules.components.TooltipComponent;
 import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpatialCompMouseOut;
 import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpatialCompMouseOver;
 import com.sebastianbechtold.manfred.EntityManager;

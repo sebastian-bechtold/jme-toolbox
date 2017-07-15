@@ -1,14 +1,12 @@
 package com.sebastianbechtold.jmeToolbox.manfredModules;
 
-import java.util.HashMap;
-
 import com.jme3.app.Application;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.input.KeyInput;
 import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.KeyTrigger;
+import com.sebastianbechtold.jmeToolbox.manfredModules.components.RotateableFlagComponent;
 import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpatialCompClickedLeft;
-import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpatialCompClickedRight;
 import com.sebastianbechtold.manfred.EntityManager;
 
 public class KeyboardRotateSystem extends AbstractManfredJmeSystemAppState {

@@ -4,6 +4,8 @@ import com.jme3.app.Application;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.math.Quaternion;
 import com.sebastianbechtold.jmeToolbox.StaticUtils;
+import com.sebastianbechtold.jmeToolbox.manfredModules.components.JmeSceneNodeComponent;
+import com.sebastianbechtold.jmeToolbox.manfredModules.components.Vec3PosComponent;
 import com.sebastianbechtold.manfred.EntityManager;
 import com.sebastianbechtold.manfred.IManfredComponent;
 
@@ -81,7 +83,6 @@ public class JmeSceneNodeUpdateSystem extends AbstractManfredJmeSystemAppState {
 	
 	
 	void onRotationComponentChanged(int id, IManfredComponent comp) {
-		System.out.println("rot comp changed");
 
 		JmeSceneNodeComponent spc = (JmeSceneNodeComponent) mEm.getComponent(id, JmeSceneNodeComponent.class);
 

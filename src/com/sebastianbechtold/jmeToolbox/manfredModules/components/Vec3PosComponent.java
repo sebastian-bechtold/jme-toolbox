@@ -1,4 +1,4 @@
-package com.sebastianbechtold.jmeToolbox.manfredModules;
+package com.sebastianbechtold.jmeToolbox.manfredModules.components;
 
 import java.util.HashMap;
 
@@ -8,7 +8,7 @@ import org.w3c.dom.Element;
 import com.sebastianbechtold.jmeToolbox.StaticUtils;
 import com.sebastianbechtold.manfred.IManfredComponent;
 
-public class Vec3PosComponent extends XmlPersistableComponent  implements IManfredComponent {
+public class Vec3PosComponent extends XmlPersistableComponent implements IManfredComponent {
 	
 	private Vector3D mPos = new Vector3D(0,0,0);
 
@@ -21,11 +21,7 @@ public class Vec3PosComponent extends XmlPersistableComponent  implements IManfr
 	}
 	
 	
-	@Override
-	public boolean doPersist() {
-
-		return true;
-	}
+	
 
 	@Override
 	public HashMap<String, Object> getXmlAttribs() {

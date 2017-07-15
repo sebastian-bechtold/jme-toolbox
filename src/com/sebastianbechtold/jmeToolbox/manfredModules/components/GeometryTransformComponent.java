@@ -1,4 +1,4 @@
-package com.sebastianbechtold.jmeToolbox.manfredModules;
+package com.sebastianbechtold.jmeToolbox.manfredModules.components;
 
 import java.util.HashMap;
 
@@ -26,10 +26,7 @@ public class GeometryTransformComponent extends XmlPersistableComponent implemen
 
 	}
 
-	@Override
-	public boolean doPersist() {
-		return true;
-	}
+	
 	
 	
 	public Vector3D getPos() {
