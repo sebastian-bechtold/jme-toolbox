@@ -3,6 +3,7 @@ package com.sebastianbechtold.jmeToolbox.manfredModules;
 import com.jme3.app.Application;
 import com.jme3.app.state.AppStateManager;
 import com.sebastianbechtold.easyvents.Easyvents;
+import com.sebastianbechtold.jmeToolbox.eventTypes.ManfredEntityDeselected;
 import com.sebastianbechtold.jmeToolbox.eventTypes.ManfredEntitySelected;
 import com.sebastianbechtold.jmeToolbox.manfredModules.components.SelectableFlagComponent;
 import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpatialCompClickedLeft;
@@ -42,6 +43,13 @@ public class SelectionSystem extends AbstractManfredJmeSystemAppState {
 			return;
 		}
 		
+		//########## BEGIN Fire deselection event for previously selected entity ###########
+		SelectableFlagComponent prevSelected = mEm.getComponent(mSelectionId, SelectableFlagComponent.class);
+		
+		if (prevSelected != null) {
+			Easyvents.defaultDispatcher.fire(ManfredEntityDeselected.class, mSelectionId);
+		}
+		//########## END Fire deselection event for previously selected entity ###########
 		
 		
 		SelectableFlagComponent sfc = mEm.getComponent(id, SelectableFlagComponent.class);
@@ -55,6 +63,7 @@ public class SelectionSystem extends AbstractManfredJmeSystemAppState {
 			mSelectionId = -1;
 		}
 
+		// Fire selection event for newly selected entity:
 		Easyvents.defaultDispatcher.fire(ManfredEntitySelected.class, mSelectionId);
 	}
 
