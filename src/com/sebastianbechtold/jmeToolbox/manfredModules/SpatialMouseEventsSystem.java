@@ -93,11 +93,9 @@ public class SpatialMouseEventsSystem extends AbstractManfredJmeSystemAppState {
 		Spatial s = (Spatial) payload;
 
 		int id = getJmeSceneNodeComponentForSpatial(s);
-
-		if (id == -1) {
-
-			return;
-		}
+		
+		// NOTE: If no scene node component was clicked, id is -1. We still forward the event to notify other
+		// systems that no component was selected, because this should still trigger deselection of the previously selected component.
 
 		Easyvents.defaultDispatcher.fire(ManfredJmeSpatialCompClickedRight.class, id);
 	}

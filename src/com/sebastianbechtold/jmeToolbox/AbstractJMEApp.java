@@ -18,6 +18,7 @@ import com.jme3.post.filters.FXAAFilter;
 import com.jme3.scene.Node;
 import com.jme3.system.AppSettings;
 import com.sebastianbechtold.jmeToolbox.manfredModules.JmeSceneNodeUpdateSystem;
+import com.sebastianbechtold.jmeToolbox.manfredModules.SelectionSystem;
 import com.sebastianbechtold.jmeToolbox.manfredModules.SpatialMouseEventsSystem;
 import com.sebastianbechtold.manfred.EntityManager;
 import com.simsilica.lemur.GuiGlobals;
@@ -39,7 +40,7 @@ public class AbstractJMEApp extends SimpleApplication {
 	Quaternion mQ = new Quaternion();
 
 
-	
+	public SelectionSystem mSelectionSystem = null;
 	
 	protected AssetManager mAssetManager = null;
 	protected InputManager mInputManager = null;

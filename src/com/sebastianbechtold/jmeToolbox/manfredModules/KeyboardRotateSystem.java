@@ -5,6 +5,7 @@ import com.jme3.app.state.AppStateManager;
 import com.jme3.input.KeyInput;
 import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.KeyTrigger;
+import com.sebastianbechtold.jmeToolbox.eventTypes.ManfredEntitySelected;
 import com.sebastianbechtold.jmeToolbox.manfredModules.components.RotateableFlagComponent;
 import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpatialCompClickedLeft;
 import com.sebastianbechtold.manfred.EntityManager;
@@ -39,7 +40,7 @@ public class KeyboardRotateSystem extends AbstractManfredJmeSystemAppState {
 
 	@Override
 	public void cleanup() {
-		com.sebastianbechtold.easyvents.Easyvents.defaultDispatcher.removeListener(ManfredJmeSpatialCompClickedLeft.class, this::onComponentClickedLeft);
+		com.sebastianbechtold.easyvents.Easyvents.defaultDispatcher.removeListener(ManfredEntitySelected.class, this::onEntitySelected);
 		
 		mInputManager.removeListener(mActionListener);
 	}
@@ -49,7 +50,7 @@ public class KeyboardRotateSystem extends AbstractManfredJmeSystemAppState {
 		super.initialize(stateManager, app);
 
 		
-		com.sebastianbechtold.easyvents.Easyvents.defaultDispatcher.addListener(ManfredJmeSpatialCompClickedLeft.class, this::onComponentClickedLeft);
+		com.sebastianbechtold.easyvents.Easyvents.defaultDispatcher.addListener(ManfredEntitySelected.class, this::onEntitySelected);
 		
 		mInputManager.addMapping("KEY_LEFT", new KeyTrigger(KeyInput.KEY_LEFT));
 		mInputManager.addMapping("KEY_RIGHT", new KeyTrigger(KeyInput.KEY_RIGHT));
@@ -62,6 +63,8 @@ public class KeyboardRotateSystem extends AbstractManfredJmeSystemAppState {
 	public void update(float tpf) {
 		// ################ BEGIN Update RotateComponents ###################
 
+		 
+		
 		RotateableFlagComponent rcp = mEm.getComponent(mSelectedComponentId, RotateableFlagComponent.class);
 		RotationComponent rc = mEm.getComponent(mSelectedComponentId, RotationComponent.class);
 
@@ -103,7 +106,7 @@ public class KeyboardRotateSystem extends AbstractManfredJmeSystemAppState {
 	}
 
 
-	private void onComponentClickedLeft(Object payload) {
+	private void onEntitySelected(Object payload) {
 		int id = (int) payload;
 		
 		

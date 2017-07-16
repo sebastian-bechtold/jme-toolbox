@@ -8,6 +8,7 @@ import com.jme3.app.state.AppStateManager;
 import com.jme3.asset.AssetManager;
 import com.jme3.input.InputManager;
 import com.jme3.math.Vector3f;
+import com.sebastianbechtold.jmeToolbox.AbstractJMEApp;
 import com.sebastianbechtold.manfred.EntityManager;
 
 /**
@@ -24,6 +25,8 @@ public abstract class AbstractManfredJmeSystemAppState extends AbstractAppState 
 	protected AssetManager mAssetManager;
 
 	protected EntityManager mEm = null;
+	
+	protected AbstractJMEApp mApp = null;
 
 	public AbstractManfredJmeSystemAppState(EntityManager em) {
 		mEm = em;
@@ -34,7 +37,8 @@ public abstract class AbstractManfredJmeSystemAppState extends AbstractAppState 
 		super.initialize(stateManager, app);
 
 		
-
+		mApp = (AbstractJMEApp) app;
+		
 		mAssetManager = app.getAssetManager();
 		mInputManager = app.getInputManager();
 	}
