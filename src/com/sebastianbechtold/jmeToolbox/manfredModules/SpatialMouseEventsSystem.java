@@ -15,7 +15,7 @@ import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpat
 import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpatialCompMouseOver;
 import com.sebastianbechtold.manfred.EntityManager;
 
-public class SpatialMouseEventsSystem extends AbstractManfredJmeSystemAppState {
+public class SpatialMouseEventsSystem extends AbstractManfredJmeAppState {
 
 	public SpatialMouseEventsSystem(EntityManager em) {
 		super(em);

@@ -15,7 +15,7 @@ import com.sebastianbechtold.manfred.EntityManager;
  *
  * @author sebastian
  */
-public abstract class AbstractManfredJmeSystemAppState extends AbstractAppState {
+public abstract class AbstractManfredJmeAppState extends AbstractAppState {
 
 	public static final Vector3f DIR_UP = new Vector3f(0, 1, 0);
 
@@ -28,7 +28,7 @@ public abstract class AbstractManfredJmeSystemAppState extends AbstractAppState 
 	
 	protected AbstractJMEApp mApp = null;
 
-	public AbstractManfredJmeSystemAppState(EntityManager em) {
+	public AbstractManfredJmeAppState(EntityManager em) {
 		mEm = em;
 	}
 

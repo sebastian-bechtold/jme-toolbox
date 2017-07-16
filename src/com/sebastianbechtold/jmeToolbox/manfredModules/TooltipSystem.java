@@ -12,7 +12,7 @@ import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpat
 import com.sebastianbechtold.manfred.EntityManager;
 import com.simsilica.lemur.Label;
 
-public class TooltipSystem extends AbstractManfredJmeSystemAppState {
+public class TooltipSystem extends AbstractManfredJmeAppState {
 
 	SimpleApplication mApp;
 

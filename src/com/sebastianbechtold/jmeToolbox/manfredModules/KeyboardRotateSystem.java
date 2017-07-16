@@ -10,7 +10,7 @@ import com.sebastianbechtold.jmeToolbox.manfredModules.components.RotateableFlag
 import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpatialCompClickedLeft;
 import com.sebastianbechtold.manfred.EntityManager;
 
-public class KeyboardRotateSystem extends AbstractManfredJmeSystemAppState {
+public class KeyboardRotateSystem extends AbstractManfredJmeAppState {
 
 	static final float mMaxRotSpeed = 0.05f;
 	static final float mRotSpeedInc = 1.1f;

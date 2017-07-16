@@ -10,7 +10,7 @@ import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpat
 import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpatialCompClickedRight;
 import com.sebastianbechtold.manfred.EntityManager;
 
-public class SelectionSystem extends AbstractManfredJmeSystemAppState {
+public class SelectionSystem extends AbstractManfredJmeAppState {
 
 	private int mSelectionId = -1;
 	

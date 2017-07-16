@@ -14,7 +14,7 @@ import com.sebastianbechtold.jmeToolbox.manfredModules.components.RotateableFlag
 import com.sebastianbechtold.jmeToolbox.manfredModules.components.Vec3PosComponent;
 import com.sebastianbechtold.manfred.EntityManager;
 
-public class DecoObjectSystem extends AbstractManfredJmeSystemAppState {
+public class DecoObjectSystem extends AbstractManfredJmeAppState {
 
 	Node mDecoObjectsNode = new Node();
 

@@ -17,7 +17,7 @@ import com.sebastianbechtold.jmeToolbox.manfredModules.components.Vec3PosCompone
 import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpatialCompClickedRight;
 import com.sebastianbechtold.manfred.EntityManager;
 
-public class MouseDragSystem extends AbstractManfredJmeSystemAppState {
+public class MouseDragSystem extends AbstractManfredJmeAppState {
 
 	public Node mTerrainNode = null;
 	Camera mCamera;

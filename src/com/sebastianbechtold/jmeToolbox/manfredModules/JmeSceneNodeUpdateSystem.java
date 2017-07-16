@@ -9,7 +9,7 @@ import com.sebastianbechtold.jmeToolbox.manfredModules.components.Vec3PosCompone
 import com.sebastianbechtold.manfred.EntityManager;
 import com.sebastianbechtold.manfred.IManfredComponent;
 
-public class JmeSceneNodeUpdateSystem extends AbstractManfredJmeSystemAppState {
+public class JmeSceneNodeUpdateSystem extends AbstractManfredJmeAppState {
 
 	Quaternion mQ = new Quaternion();
 
