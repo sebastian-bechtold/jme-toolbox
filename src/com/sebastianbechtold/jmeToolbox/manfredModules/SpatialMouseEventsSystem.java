@@ -84,8 +84,9 @@ public class SpatialMouseEventsSystem extends AbstractManfredJmeAppState {
 
 		int id = getJmeSceneNodeComponentForSpatial(s);
 
+		JmeNodeComponentMouseEvent event = new JmeNodeComponentMouseEvent(s, id);
 	
-		Easyvents.defaultDispatcher.fire(ManfredJmeSpatialCompClickedLeft.class, id);
+		Easyvents.defaultDispatcher.fire(ManfredJmeSpatialCompClickedLeft.class, event);
 	}
 
 	public void onRmbDownOnSpatial(Object payload) {
@@ -97,7 +98,11 @@ public class SpatialMouseEventsSystem extends AbstractManfredJmeAppState {
 		// NOTE: If no scene node component was clicked, id is -1. We still forward the event to notify other
 		// systems that no component was selected, because this should still trigger deselection of the previously selected component.
 
-		Easyvents.defaultDispatcher.fire(ManfredJmeSpatialCompClickedRight.class, id);
+		
+		// TODO 4: Fire event only if entity has really changed
+		JmeNodeComponentMouseEvent event = new JmeNodeComponentMouseEvent(s, id);
+		
+		Easyvents.defaultDispatcher.fire(ManfredJmeSpatialCompClickedRight.class, event);
 	}
 
 	void onSpatialMouseOver(Object payload) {
@@ -110,7 +115,10 @@ public class SpatialMouseEventsSystem extends AbstractManfredJmeAppState {
 			return;
 		}
 
-		Easyvents.defaultDispatcher.fire(ManfredJmeSpatialCompMouseOver.class, id);
+		// TODO 4: Fire event only if entity has really changed
+		JmeNodeComponentMouseEvent event = new JmeNodeComponentMouseEvent(s, id);
+		
+		Easyvents.defaultDispatcher.fire(ManfredJmeSpatialCompMouseOver.class, event);
 	}
 
 	void onSpatialMouseOut(Object payload) {
@@ -118,8 +126,11 @@ public class SpatialMouseEventsSystem extends AbstractManfredJmeAppState {
 		Spatial s = (Spatial) payload;
 
 		int id = getJmeSceneNodeComponentForSpatial(s);
+		
+		// TODO 4: Fire event only if entity has really changed
+		JmeNodeComponentMouseEvent event = new JmeNodeComponentMouseEvent(s, id);
 
-		Easyvents.defaultDispatcher.fire(ManfredJmeSpatialCompMouseOut.class, id);
+		Easyvents.defaultDispatcher.fire(ManfredJmeSpatialCompMouseOut.class, event);
 	}
 
 }

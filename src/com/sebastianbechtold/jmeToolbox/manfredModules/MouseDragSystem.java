@@ -109,8 +109,10 @@ public class MouseDragSystem extends AbstractManfredJmeAppState {
 	
 	public void onComponentRightClicked(Object payload) {
 
-		int id = (int) payload;
+		JmeNodeComponentMouseEvent event = (JmeNodeComponentMouseEvent) payload;
+		int id = event.mEntityId;
 
+		
 		if (id == -1) {
 			return;
 		}

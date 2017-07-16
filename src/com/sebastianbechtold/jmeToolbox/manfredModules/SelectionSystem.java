@@ -38,7 +38,10 @@ public class SelectionSystem extends AbstractManfredJmeAppState {
 
 	
 	private void onSpatialComponentClickedLeft(Object payload) {
-		int id = (int) payload;
+	JmeNodeComponentMouseEvent event = (JmeNodeComponentMouseEvent) payload;
+		
+		int id = event.mEntityId;
+
 
 		if (id == mSelectionId) {
 			return;

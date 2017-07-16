@@ -64,7 +64,7 @@ public class AbstractJMEApp extends SimpleApplication {
 		settings.setResolution(1280, 720);
 		
 		settings.setResolution(1400, 1000);
-		//settings.setResolution(1920, 1080);
+		settings.setResolution(1920, 1080);
 		
 		settings.setFrameRate(30);
 

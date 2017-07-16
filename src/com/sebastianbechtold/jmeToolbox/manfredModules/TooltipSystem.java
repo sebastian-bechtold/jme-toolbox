@@ -52,7 +52,9 @@ public class TooltipSystem extends AbstractManfredJmeAppState {
 
 	void onSpatialCompMouseOver(Object payload) {
 
-		int id = (int) payload;
+		JmeNodeComponentMouseEvent event = (JmeNodeComponentMouseEvent) payload;
+		int id = event.mEntityId;
+
 
 		TooltipComponent ttc = mEm.getComponent(id, TooltipComponent.class);
 
