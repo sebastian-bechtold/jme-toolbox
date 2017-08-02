@@ -13,9 +13,8 @@ import com.sebastianbechtold.easyvents.Easyvents;
 import com.sebastianbechtold.jmeToolbox.StaticUtils;
 import com.sebastianbechtold.jmeToolbox.eventTypes.JmeMouseButtonReleasedRight;
 import com.sebastianbechtold.jmeToolbox.manfredModules.components.DraggableFlagComponent;
-import com.sebastianbechtold.jmeToolbox.manfredModules.components.Vec3PosComponent;
+import com.sebastianbechtold.jmeToolbox.manfredModules.components.Vec3PosCmp;
 import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpatialCompClickedRight;
-import com.sebastianbechtold.manfred.EntityManager;
 
 public class MouseDragSystem extends AbstractManfredJmeAppState {
 
@@ -26,8 +25,8 @@ public class MouseDragSystem extends AbstractManfredJmeAppState {
 	int mDraggedEntity = -1;
 
 	
-	public MouseDragSystem(EntityManager em, Node pickRoot, Camera camera) {
-		super(em);
+	public MouseDragSystem(Node pickRoot, Camera camera) {
+		
 		
 		mCamera = camera;
 		mTerrainNode = pickRoot;
@@ -60,7 +59,7 @@ public class MouseDragSystem extends AbstractManfredJmeAppState {
 			return;
 		}
 
-		Vec3PosComponent pc = mEm.getComponent(mDraggedEntity, Vec3PosComponent.class);
+		Vec3PosCmp pc = mEm.getComponent(mDraggedEntity, Vec3PosCmp.class);
 
 		if (pc == null) {
 			return;
@@ -77,8 +76,11 @@ public class MouseDragSystem extends AbstractManfredJmeAppState {
 
 			if (!intersect.equals(pc.getPos())) {
 
-				// Update PositionComponent:				 										
-				mEm.setComponent(mDraggedEntity, new Vec3PosComponent(StaticUtils.jme2am_vector(intersect)));
+				// Update PositionComponent:			
+				Vec3PosCmp vec3Pos = new Vec3PosCmp(StaticUtils.jme2am_vector(intersect));
+				vec3Pos.setPersistance(pc.doPersist());
+				
+				mEm.setComponent(mDraggedEntity, vec3Pos);
 			}
 		}
 	}
@@ -118,7 +120,7 @@ public class MouseDragSystem extends AbstractManfredJmeAppState {
 		}
 
 		DraggableFlagComponent dc = mEm.getComponent(id, DraggableFlagComponent.class);
-		Vec3PosComponent pc = mEm.getComponent(id, Vec3PosComponent.class);
+		Vec3PosCmp pc = mEm.getComponent(id, Vec3PosCmp.class);
 
 		if (dc == null || pc == null) {
 			return;

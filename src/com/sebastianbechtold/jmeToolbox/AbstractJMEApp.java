@@ -13,12 +13,9 @@ import com.jme3.input.FlyByCamera;
 import com.jme3.input.InputManager;
 import com.jme3.math.Quaternion;
 import com.jme3.math.Vector3f;
-import com.jme3.post.FilterPostProcessor;
-import com.jme3.post.filters.FXAAFilter;
 import com.jme3.scene.Node;
 import com.jme3.system.AppSettings;
 import com.sebastianbechtold.jmeToolbox.manfredModules.JmeSceneNodeUpdateSystem;
-import com.sebastianbechtold.jmeToolbox.manfredModules.SelectionSystem;
 import com.sebastianbechtold.jmeToolbox.manfredModules.SpatialMouseEventsSystem;
 import com.sebastianbechtold.manfred.EntityManager;
 import com.simsilica.lemur.GuiGlobals;
@@ -30,8 +27,7 @@ public class AbstractJMEApp extends SimpleApplication {
 
 	
 
-	protected EntityManager mEm = null;
-
+	
 	// ######### BEGIN Some lists to keep track of stuff ##########
 
 	//public Vector3f mSunDir = null;
@@ -40,7 +36,7 @@ public class AbstractJMEApp extends SimpleApplication {
 	Quaternion mQ = new Quaternion();
 
 
-	public SelectionSystem mSelectionSystem = null;
+	
 	
 	protected AssetManager mAssetManager = null;
 	protected InputManager mInputManager = null;
@@ -50,9 +46,7 @@ public class AbstractJMEApp extends SimpleApplication {
 
 	protected ChaseCamera mChaseCam = null;
 
-	public AbstractJMEApp(EntityManager em) {
-		mEm = em;
-	}
+	public EntityManager mEm = new EntityManager();
 
 	public void init() {
 
@@ -67,6 +61,9 @@ public class AbstractJMEApp extends SimpleApplication {
 		settings.setResolution(1920, 1080);
 		//settings.setResolution(640, 480);
 		
+		
+		// NOTE: setResizable() causes really really low FPS!
+		//settings.setResizable(true);
 		settings.setFrameRate(30);
 
 		setSettings(settings);
@@ -173,7 +170,7 @@ public class AbstractJMEApp extends SimpleApplication {
 
 		// ########################### BEGIN Set up AppStates ############################
 
-		stateManager.attach(new JmeSceneNodeUpdateSystem(mEm));
+		stateManager.attach(new JmeSceneNodeUpdateSystem());
 		
 		
 		// NOTE: MouseEventsAppState registers and forwards mouse events on JME spatials 
@@ -181,7 +178,7 @@ public class AbstractJMEApp extends SimpleApplication {
 		
 		// NOTE: SpatialMouseEventsSystem registers and forwards mouse events on
 		// Manfred JmeSceneNodeComponent components
-		stateManager.attach(new SpatialMouseEventsSystem(mEm));
+		stateManager.attach(new SpatialMouseEventsSystem());
 
 		// ########################## END Set up AppStates #######################
 

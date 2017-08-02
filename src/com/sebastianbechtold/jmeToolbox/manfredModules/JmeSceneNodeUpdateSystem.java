@@ -4,25 +4,22 @@ import com.jme3.app.Application;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.math.Quaternion;
 import com.sebastianbechtold.jmeToolbox.StaticUtils;
-import com.sebastianbechtold.jmeToolbox.manfredModules.components.JmeSceneNodeComponent;
-import com.sebastianbechtold.jmeToolbox.manfredModules.components.Vec3PosComponent;
-import com.sebastianbechtold.manfred.EntityManager;
+import com.sebastianbechtold.jmeToolbox.manfredModules.components.JmeSceneNodeCmp;
+import com.sebastianbechtold.jmeToolbox.manfredModules.components.Vec3PosCmp;
 import com.sebastianbechtold.manfred.IManfredComponent;
 
 public class JmeSceneNodeUpdateSystem extends AbstractManfredJmeAppState {
 
 	Quaternion mQ = new Quaternion();
 
-	public JmeSceneNodeUpdateSystem(EntityManager em) {
-		super(em);
-	}
+	
 
 	@Override
 	public void cleanup() {
 
-		mEm.removeComponentReplacedListener(Vec3PosComponent.class, this::onVec3PositionComponentChanged);
+		mEm.removeComponentReplacedListener(Vec3PosCmp.class, this::onVec3PositionComponentChanged);
 		mEm.removeComponentReplacedListener(RotationComponent.class, this::onRotationComponentChanged);
-		mEm.removeComponentReplacedListener(JmeSceneNodeComponent.class, this::onSceneNodeComponentChanged);
+		mEm.removeComponentReplacedListener(JmeSceneNodeCmp.class, this::onSceneNodeComponentChanged);
 		
 	}
 
@@ -30,9 +27,9 @@ public class JmeSceneNodeUpdateSystem extends AbstractManfredJmeAppState {
 	public void initialize(AppStateManager stateManager, Application app) {
 		super.initialize(stateManager, app);
 
-		mEm.addComponentReplacedListener(Vec3PosComponent.class, this::onVec3PositionComponentChanged);
+		mEm.addComponentReplacedListener(Vec3PosCmp.class, this::onVec3PositionComponentChanged);
 		mEm.addComponentReplacedListener(RotationComponent.class, this::onRotationComponentChanged);
-		mEm.addComponentReplacedListener(JmeSceneNodeComponent.class, this::onSceneNodeComponentChanged);		
+		mEm.addComponentReplacedListener(JmeSceneNodeCmp.class, this::onSceneNodeComponentChanged);		
 	}
 
 	
@@ -41,7 +38,7 @@ public class JmeSceneNodeUpdateSystem extends AbstractManfredJmeAppState {
 		int id = (int) payload;
 
 		// ############# BEGIn Remove spatial from scene graph ################
-		JmeSceneNodeComponent spc = mEm.getComponent(id, JmeSceneNodeComponent.class);
+		JmeSceneNodeCmp spc = mEm.getComponent(id, JmeSceneNodeCmp.class);
 
 		if (spc == null) {
 			return;
@@ -55,8 +52,8 @@ public class JmeSceneNodeUpdateSystem extends AbstractManfredJmeAppState {
 
 	void onSceneNodeComponentChanged(int id, IManfredComponent comp) {
 
-		JmeSceneNodeComponent spc_old = (JmeSceneNodeComponent) comp;
-		JmeSceneNodeComponent spc_new = mEm.getComponent(id, JmeSceneNodeComponent.class);
+		JmeSceneNodeCmp spc_old = (JmeSceneNodeCmp) comp;
+		JmeSceneNodeCmp spc_new = mEm.getComponent(id, JmeSceneNodeCmp.class);
 		
 		if (spc_old != null && spc_new == null) {
 			System.out.println("Spatial component removed!");
@@ -67,14 +64,14 @@ public class JmeSceneNodeUpdateSystem extends AbstractManfredJmeAppState {
 	
 	void onVec3PositionComponentChanged(int id, IManfredComponent comp) {
 
-		JmeSceneNodeComponent spc = (JmeSceneNodeComponent) mEm.getComponent(id, JmeSceneNodeComponent.class);
+		JmeSceneNodeCmp spc = (JmeSceneNodeCmp) mEm.getComponent(id, JmeSceneNodeCmp.class);
 
 		if (spc == null) {
 			return;
 		}
 
 		// ########## BEGIN Apply information from PositionComponent to SpatialComponent ###########
-		Vec3PosComponent pc = (Vec3PosComponent) comp;
+		Vec3PosCmp pc = (Vec3PosCmp) comp;
 
 		if (pc != null) {
 			spc.mNode.setLocalTranslation(StaticUtils.am2jme_vector(pc.getPos()));
@@ -84,7 +81,7 @@ public class JmeSceneNodeUpdateSystem extends AbstractManfredJmeAppState {
 	
 	void onRotationComponentChanged(int id, IManfredComponent comp) {
 
-		JmeSceneNodeComponent spc = (JmeSceneNodeComponent) mEm.getComponent(id, JmeSceneNodeComponent.class);
+		JmeSceneNodeCmp spc = (JmeSceneNodeCmp) mEm.getComponent(id, JmeSceneNodeCmp.class);
 
 		if (spc == null) {
 			return;

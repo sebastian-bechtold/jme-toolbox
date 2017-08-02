@@ -8,18 +8,15 @@ import com.sebastianbechtold.jmeToolbox.eventTypes.JmeSpatialClickedLeft;
 import com.sebastianbechtold.jmeToolbox.eventTypes.JmeSpatialClickedRight;
 import com.sebastianbechtold.jmeToolbox.eventTypes.JmeSpatialMouseOut;
 import com.sebastianbechtold.jmeToolbox.eventTypes.JmeSpatialMouseOver;
-import com.sebastianbechtold.jmeToolbox.manfredModules.components.JmeSceneNodeComponent;
+import com.sebastianbechtold.jmeToolbox.manfredModules.components.JmeSceneNodeCmp;
 import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpatialCompClickedLeft;
 import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpatialCompClickedRight;
 import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpatialCompMouseOut;
 import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpatialCompMouseOver;
-import com.sebastianbechtold.manfred.EntityManager;
 
 public class SpatialMouseEventsSystem extends AbstractManfredJmeAppState {
 
-	public SpatialMouseEventsSystem(EntityManager em) {
-		super(em);
-	}
+	
 
 	@Override
 	public void cleanup() {
@@ -46,9 +43,9 @@ public class SpatialMouseEventsSystem extends AbstractManfredJmeAppState {
 			// the entity ID as user data in the JmeSceneNodeComponent's "root" node.
 
 			//############## BEGIN ... and loop through all JmeSceneNodeComponents, trying to find one that references the current node ################
-			for (int id : mEm.getEntitiesWith(JmeSceneNodeComponent.class)) {
+			for (int id : mEm.getEntitiesWith(JmeSceneNodeCmp.class)) {
 
-				JmeSceneNodeComponent spc = mEm.getComponent(id, JmeSceneNodeComponent.class);
+				JmeSceneNodeCmp spc = mEm.getComponent(id, JmeSceneNodeCmp.class);
 
 				if (spc.mNode == s) {
 
@@ -98,8 +95,6 @@ public class SpatialMouseEventsSystem extends AbstractManfredJmeAppState {
 		// NOTE: If no scene node component was clicked, id is -1. We still forward the event to notify other
 		// systems that no component was selected, because this should still trigger deselection of the previously selected component.
 
-		
-		// TODO 4: Fire event only if entity has really changed
 		JmeNodeComponentMouseEvent event = new JmeNodeComponentMouseEvent(s, id);
 		
 		Easyvents.defaultDispatcher.fire(ManfredJmeSpatialCompClickedRight.class, event);

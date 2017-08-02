@@ -7,18 +7,13 @@ import com.sebastianbechtold.jmeToolbox.eventTypes.ManfredEntityDeselected;
 import com.sebastianbechtold.jmeToolbox.eventTypes.ManfredEntitySelected;
 import com.sebastianbechtold.jmeToolbox.manfredModules.components.SelectableFlagComponent;
 import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpatialCompClickedRight;
-import com.sebastianbechtold.manfred.EntityManager;
 import com.sebastianbechtold.manfred.IManfredComponent;
 
 public class SelectionSystem extends AbstractManfredJmeAppState {
 
 	private int mSelectionId = -1;
 
-	public SelectionSystem(EntityManager em) {
-		super(em);
-
-	}
-
+	
 	@Override
 	public void cleanup() {
 

@@ -9,7 +9,6 @@ import com.sebastianbechtold.easyvents.Easyvents;
 import com.sebastianbechtold.jmeToolbox.manfredModules.components.TooltipComponent;
 import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpatialCompMouseOut;
 import com.sebastianbechtold.jmeToolbox.manfredModules.eventTypes.ManfredJmeSpatialCompMouseOver;
-import com.sebastianbechtold.manfred.EntityManager;
 import com.simsilica.lemur.Label;
 
 public class TooltipSystem extends AbstractManfredJmeAppState {
@@ -20,10 +19,7 @@ public class TooltipSystem extends AbstractManfredJmeAppState {
 
 	Vector2f mTooltipOffset = new Vector2f(15, -15);
 
-	public TooltipSystem(SimpleApplication app, EntityManager em) {
-		super(em);
-		mApp = app;
-	}
+	
 
 	@Override
 	public void cleanup() {
@@ -41,14 +37,17 @@ public class TooltipSystem extends AbstractManfredJmeAppState {
 		Easyvents.defaultDispatcher.addListener(ManfredJmeSpatialCompMouseOut.class, this::onSpatialCompMouseOut);
 
 		mTooltipLabel.setCullHint(CullHint.Always);
-		mApp.getGuiNode().attachChild(mTooltipLabel);		
+		// TODO 3: Reimplement tooltip functionality
+		//mApp.getGuiNode().attachChild(mTooltipLabel);		
 	}
 
+	/*
 	@Override
 	public void update(float tpf) {
 		Vector2f tooltipCoords = mApp.getInputManager().getCursorPosition().add(mTooltipOffset);
 		mTooltipLabel.setLocalTranslation(tooltipCoords.x, tooltipCoords.y, 0);
 	}
+	*/
 
 	void onSpatialCompMouseOver(Object payload) {
 

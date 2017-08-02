@@ -5,6 +5,7 @@ import java.util.HashMap;
 import org.w3c.dom.Element;
 
 import com.sebastianbechtold.jmeToolbox.manfredModules.components.XmlPersistableComponent;
+import com.sebastianbechtold.manfred.EntityManager;
 import com.sebastianbechtold.manfred.IManfredComponent;
 
 public class RotationComponent extends XmlPersistableComponent implements IManfredComponent {
@@ -36,7 +37,7 @@ public class RotationComponent extends XmlPersistableComponent implements IManfr
 	}
 
 	@Override
-	public HashMap<String, Object> getXmlAttribs() {
+	public HashMap<String, Object> getXmlAttribs(EntityManager em) {
 
 		HashMap<String, Object> result = new HashMap<>();
 

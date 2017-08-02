@@ -28,9 +28,7 @@ public abstract class AbstractManfredJmeAppState extends AbstractAppState {
 	
 	protected AbstractJMEApp mApp = null;
 
-	public AbstractManfredJmeAppState(EntityManager em) {
-		mEm = em;
-	}
+	
 
 	@Override
 	public void initialize(AppStateManager stateManager, Application app) {
@@ -38,6 +36,8 @@ public abstract class AbstractManfredJmeAppState extends AbstractAppState {
 
 		
 		mApp = (AbstractJMEApp) app;
+		
+		mEm = mApp.getEntityManager();
 		
 		mAssetManager = app.getAssetManager();
 		mInputManager = app.getInputManager();
