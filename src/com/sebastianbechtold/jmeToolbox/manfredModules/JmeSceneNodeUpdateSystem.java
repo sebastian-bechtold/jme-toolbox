@@ -18,7 +18,7 @@ public class JmeSceneNodeUpdateSystem extends AbstractManfredJmeAppState {
 	public void cleanup() {
 
 		mEm.removeComponentReplacedListener(Vec3PosCmp.class, this::onVec3PositionComponentChanged);
-		mEm.removeComponentReplacedListener(RotationComponent.class, this::onRotationComponentChanged);
+		mEm.removeComponentReplacedListener(RotationCmp.class, this::onRotationComponentChanged);
 		mEm.removeComponentReplacedListener(JmeSceneNodeCmp.class, this::onSceneNodeComponentChanged);
 		
 	}
@@ -28,7 +28,7 @@ public class JmeSceneNodeUpdateSystem extends AbstractManfredJmeAppState {
 		super.initialize(stateManager, app);
 
 		mEm.addComponentReplacedListener(Vec3PosCmp.class, this::onVec3PositionComponentChanged);
-		mEm.addComponentReplacedListener(RotationComponent.class, this::onRotationComponentChanged);
+		mEm.addComponentReplacedListener(RotationCmp.class, this::onRotationComponentChanged);
 		mEm.addComponentReplacedListener(JmeSceneNodeCmp.class, this::onSceneNodeComponentChanged);		
 	}
 
@@ -88,7 +88,7 @@ public class JmeSceneNodeUpdateSystem extends AbstractManfredJmeAppState {
 		}
 
 		// ########## BEGIN Apply information from RotationComponent to SpatialComponent ###########
-		RotationComponent rc = (RotationComponent) comp;
+		RotationCmp rc = (RotationCmp) comp;
 
 		if (rc != null) {
 			spc.mNode.setLocalRotation(mQ.fromAngleAxis((float) rc.getAngle(), DIR_UP));

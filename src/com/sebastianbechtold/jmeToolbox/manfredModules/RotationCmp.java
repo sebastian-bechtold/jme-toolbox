@@ -2,36 +2,23 @@ package com.sebastianbechtold.jmeToolbox.manfredModules;
 
 import java.util.HashMap;
 
-import org.w3c.dom.Element;
-
 import com.sebastianbechtold.jmeToolbox.manfredModules.components.XmlPersistableComponent;
 import com.sebastianbechtold.manfred.EntityManager;
 import com.sebastianbechtold.manfred.IManfredComponent;
 
-public class RotationComponent extends XmlPersistableComponent implements IManfredComponent {
+public class RotationCmp extends XmlPersistableComponent implements IManfredComponent {
 
 	private double mAngle = 0;
 
-	public RotationComponent() {
+	public RotationCmp(double angle) {
 
+		mAngle = angle;
 	}
 
-	public RotationComponent(Element xml) {
-	
-		try {
-			mAngle = Double.parseDouble(xml.getAttribute("angle"));
-		} catch (Exception e) {
-
-		}
-
-	}
-
-	
-	
 	public double getAngle() {
 		return mAngle % (Math.PI * 2);
 	}
-	
+
 	public void setAngle(double angle) {
 		mAngle = (angle % (Math.PI * 2));
 	}

@@ -16,7 +16,7 @@ public class KeyboardRotateSystem extends AbstractManfredJmeAppState {
 	int mRotDir = 0;
 
 	RotateableFlagComponent rcp = null;
-	RotationComponent rc = null;
+	RotationCmp rc = null;
 
 	
 	int mSelectedComponentId = -1;
@@ -61,7 +61,7 @@ public class KeyboardRotateSystem extends AbstractManfredJmeAppState {
 		 
 		
 		RotateableFlagComponent rcp = mEm.getComponent(mSelectedComponentId, RotateableFlagComponent.class);
-		RotationComponent rc = mEm.getComponent(mSelectedComponentId, RotationComponent.class);
+		RotationCmp rc = mEm.getComponent(mSelectedComponentId, RotationCmp.class);
 
 		if (rcp != null && rc != null) {
 

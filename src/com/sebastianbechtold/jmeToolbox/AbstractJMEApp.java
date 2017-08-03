@@ -59,7 +59,7 @@ public class AbstractJMEApp extends SimpleApplication {
 		
 		settings.setResolution(1400, 1000);
 		settings.setResolution(1920, 1080);
-		//settings.setResolution(640, 480);
+		
 		
 		
 		// NOTE: setResizable() causes really really low FPS!
