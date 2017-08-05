@@ -43,7 +43,7 @@ public class MouseDragSystem extends AbstractManfredJmeAppState {
 		@Override
 		public void onAnalog(String name, float value, float tpf) {
 
-			if ("RotateX".equals(name) || "RotateY".equals(name)) {
+			if ("mouseMoveX".equals(name) || "mouseMoveY".equals(name)) {
 
 				if (mDraggedEntity == -1) {
 					return;
@@ -80,15 +80,14 @@ public class MouseDragSystem extends AbstractManfredJmeAppState {
 					mEm.setComponent(mDraggedEntity, new Vec3PosCmp(StaticUtils.jme2am_vector(newObjectPos)));
 
 					// ############## BEGIN Update 2D drag offset #################
-					// Vector3f objectScreenPos3D = mCamera.getScreenCoordinates(newObjectPos);
-					// Vector2f objectScreenPos2D = new Vector2f(objectScreenPos3D.getX(), objectScreenPos3D.getY());
-
+					
 					Vector2f objectScreenPos2D = shiftedMouseCoords;
 
 					Vector3f grabScreenPos3d = mCamera.getScreenCoordinates(newObjectPos.add(mCenterToGrabOffset));
 					Vector2f grabScreenPos2d = new Vector2f(grabScreenPos3d.getX(), grabScreenPos3d.getY());
 
-					mDiff = objectScreenPos2D.subtract(grabScreenPos2d);
+					// TODO 3: Fix this
+					//mDiff = objectScreenPos2D.subtract(grabScreenPos2d);
 					// ############## END Update 2D drag offset #################
 
 				}
@@ -112,11 +111,10 @@ public class MouseDragSystem extends AbstractManfredJmeAppState {
 		Easyvents.defaultDispatcher.addListener(ManfredJmeSpatialCompClickedRight.class, this::onComponentRightClicked);
 		Easyvents.defaultDispatcher.addListener(JmeMouseButtonReleasedRight.class, this::onRmbUp);
 
-		mInputManager.addMapping("RotateX", new MouseAxisTrigger(MouseInput.AXIS_X, false), new MouseAxisTrigger(MouseInput.AXIS_X, true));
+		mInputManager.addMapping("mouseMoveX", new MouseAxisTrigger(MouseInput.AXIS_X, false), new MouseAxisTrigger(MouseInput.AXIS_X, true));
+		mInputManager.addMapping("mouseMoveY", new MouseAxisTrigger(MouseInput.AXIS_Y, false), new MouseAxisTrigger(MouseInput.AXIS_Y, true));
 
-		mInputManager.addMapping("RotateY", new MouseAxisTrigger(MouseInput.AXIS_Y, false), new MouseAxisTrigger(MouseInput.AXIS_Y, true));
-
-		mInputManager.addListener(mAnalogListener, "RotateX", "RotateY");
+		mInputManager.addListener(mAnalogListener, "mouseMoveX", "mouseMoveY");
 
 	}
 

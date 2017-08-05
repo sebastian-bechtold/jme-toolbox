@@ -16,6 +16,7 @@ import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
 import com.jme3.system.AppSettings;
 import com.sebastianbechtold.jmeToolbox.manfredModules.JmeSceneNodeUpdateSystem;
+import com.sebastianbechtold.jmeToolbox.manfredModules.SelectionSystem;
 import com.sebastianbechtold.jmeToolbox.manfredModules.SpatialMouseEventsSystem;
 import com.sebastianbechtold.manfred.EntityManager;
 import com.simsilica.lemur.GuiGlobals;
@@ -35,7 +36,7 @@ public class AbstractJMEApp extends SimpleApplication {
 
 	Quaternion mQ = new Quaternion();
 
-
+	public SelectionSystem mSelectionSystem = null;
 	
 	
 	protected AssetManager mAssetManager = null;
@@ -174,12 +175,12 @@ public class AbstractJMEApp extends SimpleApplication {
 		
 		
 		// NOTE: MouseEventsAppState registers and forwards mouse events on JME spatials 
-		stateManager.attach(new MouseEventsAppState(rootNode));
+		stateManager.attach(new MouseEventsAppState(mWorldNode));
 		
 		// NOTE: SpatialMouseEventsSystem registers and forwards mouse events on
 		// Manfred JmeSceneNodeComponent components
 		stateManager.attach(new SpatialMouseEventsSystem());
-
+		mSelectionSystem = new SelectionSystem();
 		// ########################## END Set up AppStates #######################
 
 
