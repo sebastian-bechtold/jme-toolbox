@@ -13,6 +13,7 @@ import com.jme3.scene.shape.Box;
 import com.sebastianbechtold.easyvents.Easyvents;
 import com.sebastianbechtold.jmeToolbox.eventTypes.ManfredEntitySelected;
 import com.sebastianbechtold.jmeToolbox.manfredModules.components.JmeSceneNodeCmp;
+import com.sun.javafx.scene.control.behavior.OrientedKeyBinding;
 import com.jme3.scene.Spatial.CullHint;
 
 public class SelectionVisualizationSystem extends AbstractManfredJmeAppState {
@@ -81,7 +82,8 @@ public class SelectionVisualizationSystem extends AbstractManfredJmeAppState {
 			if (jsc != null) {
 
 				BoundingBox bv = (BoundingBox) jsc.mNode.getWorldBound();
-
+				
+				
 				// jsc.mNode.attachChild(mSelectionFrameModel);
 				mSelectionFrameModel.setLocalTranslation(jsc.mNode.getWorldTranslation().add(0, bv.getYExtent(), 0));
 
