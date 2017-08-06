@@ -86,7 +86,7 @@ public class MouseDragSystem extends AbstractManfredJmeAppState {
 					Vector3f grabScreenPos3d = mCamera.getScreenCoordinates(newObjectPos.add(mCenterToGrabOffset));
 					Vector2f grabScreenPos2d = new Vector2f(grabScreenPos3d.getX(), grabScreenPos3d.getY());
 
-					// TODO 3: Fix this
+					// TODO 4: Fix object mouse dragging
 					//mDiff = objectScreenPos2D.subtract(grabScreenPos2d);
 					// ############## END Update 2D drag offset #################
 
@@ -144,7 +144,7 @@ public class MouseDragSystem extends AbstractManfredJmeAppState {
 	public void onComponentRightClicked(Object payload) {
 
 		JmeNodeComponentMouseEvent event = (JmeNodeComponentMouseEvent) payload;
-		// TODO 2: Include collision results in JmeNodeComponentMouseEvent
+		// TODO 3: Include collision results in JmeNodeComponentMouseEvent
 		int id = event.mEntityId;
 
 		if (id == -1) {

@@ -33,7 +33,7 @@ public class SelectionVisualizationSystem extends AbstractManfredJmeAppState {
 
 		
 		WireBox box1 = new WireBox(1,1,1);
-		// TODO 2: Create custom mesh
+
 		box1.setMode(Mode.Lines);
 		box1.setLineWidth(2);
 		mSelectionFrameModel = new Geometry("Box", box1);

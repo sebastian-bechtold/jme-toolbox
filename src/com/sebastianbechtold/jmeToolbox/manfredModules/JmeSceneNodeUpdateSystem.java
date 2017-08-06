@@ -17,9 +17,9 @@ public class JmeSceneNodeUpdateSystem extends AbstractManfredJmeAppState {
 	@Override
 	public void cleanup() {
 
-		mEm.removeComponentReplacedListener(Vec3PosCmp.class, this::onVec3PositionComponentChanged);
-		mEm.removeComponentReplacedListener(RotationCmp.class, this::onRotationComponentChanged);
-		mEm.removeComponentReplacedListener(JmeSceneNodeCmp.class, this::onSceneNodeComponentChanged);
+		mEm.removeComponentReplacedListener(Vec3PosCmp.class, this::onVec3PositionComponentReplaced);
+		mEm.removeComponentReplacedListener(RotationCmp.class, this::onRotationComponentReplaced);
+		mEm.removeComponentReplacedListener(JmeSceneNodeCmp.class, this::onSceneNodeComponentReplaced);
 		
 	}
 
@@ -27,9 +27,9 @@ public class JmeSceneNodeUpdateSystem extends AbstractManfredJmeAppState {
 	public void initialize(AppStateManager stateManager, Application app) {
 		super.initialize(stateManager, app);
 
-		mEm.addComponentReplacedListener(Vec3PosCmp.class, this::onVec3PositionComponentChanged);
-		mEm.addComponentReplacedListener(RotationCmp.class, this::onRotationComponentChanged);
-		mEm.addComponentReplacedListener(JmeSceneNodeCmp.class, this::onSceneNodeComponentChanged);		
+		mEm.addComponentReplacedListener(Vec3PosCmp.class, this::onVec3PositionComponentReplaced);
+		mEm.addComponentReplacedListener(RotationCmp.class, this::onRotationComponentReplaced);
+		mEm.addComponentReplacedListener(JmeSceneNodeCmp.class, this::onSceneNodeComponentReplaced);		
 	}
 
 	
@@ -50,7 +50,7 @@ public class JmeSceneNodeUpdateSystem extends AbstractManfredJmeAppState {
 
 	//////// ############ BEGIN New Event handlers #################
 
-	void onSceneNodeComponentChanged(int id, IManfredComponent comp) {
+	void onSceneNodeComponentReplaced(int id, IManfredComponent comp) {
 
 		JmeSceneNodeCmp spc_old = (JmeSceneNodeCmp) comp;
 		JmeSceneNodeCmp spc_new = mEm.getComponent(id, JmeSceneNodeCmp.class);
@@ -62,8 +62,9 @@ public class JmeSceneNodeUpdateSystem extends AbstractManfredJmeAppState {
 				
 	}
 	
-	void onVec3PositionComponentChanged(int id, IManfredComponent comp) {
+	void onVec3PositionComponentReplaced(int id, IManfredComponent comp) {
 
+		
 		JmeSceneNodeCmp spc = (JmeSceneNodeCmp) mEm.getComponent(id, JmeSceneNodeCmp.class);
 
 		if (spc == null) {
@@ -79,7 +80,7 @@ public class JmeSceneNodeUpdateSystem extends AbstractManfredJmeAppState {
 	}
 	
 	
-	void onRotationComponentChanged(int id, IManfredComponent comp) {
+	void onRotationComponentReplaced(int id, IManfredComponent comp) {
 
 		JmeSceneNodeCmp spc = (JmeSceneNodeCmp) mEm.getComponent(id, JmeSceneNodeCmp.class);
 
