@@ -5,6 +5,7 @@ import com.jme3.app.state.AppStateManager;
 import com.jme3.math.Quaternion;
 import com.sebastianbechtold.jmeToolbox.StaticUtils;
 import com.sebastianbechtold.jmeToolbox.manfredModules.components.JmeSceneNodeCmp;
+import com.sebastianbechtold.jmeToolbox.manfredModules.components.RotationCmp;
 import com.sebastianbechtold.jmeToolbox.manfredModules.components.Vec3PosCmp;
 import com.sebastianbechtold.manfred.IManfredComponent;
 

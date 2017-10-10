@@ -1,8 +1,7 @@
-package com.sebastianbechtold.jmeToolbox.manfredModules;
+package com.sebastianbechtold.jmeToolbox.manfredModules.components;
 
 import java.util.HashMap;
 
-import com.sebastianbechtold.jmeToolbox.manfredModules.components.XmlPersistableComponent;
 import com.sebastianbechtold.manfred.EntityManager;
 import com.sebastianbechtold.manfred.IManfredComponent;
 

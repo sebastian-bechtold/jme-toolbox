@@ -3,18 +3,15 @@ package com.sebastianbechtold.jmeToolbox.manfredModules;
 import com.jme3.app.Application;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.bounding.BoundingBox;
-import com.jme3.bounding.BoundingVolume;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Mesh.Mode;
+import com.jme3.scene.Spatial.CullHint;
 import com.jme3.scene.debug.WireBox;
-import com.jme3.scene.shape.Box;
 import com.sebastianbechtold.easyvents.Easyvents;
 import com.sebastianbechtold.jmeToolbox.eventTypes.ManfredEntitySelected;
 import com.sebastianbechtold.jmeToolbox.manfredModules.components.JmeSceneNodeCmp;
-import com.sun.javafx.scene.control.behavior.OrientedKeyBinding;
-import com.jme3.scene.Spatial.CullHint;
 
 public class SelectionVisualizationSystem extends AbstractManfredJmeAppState {
 

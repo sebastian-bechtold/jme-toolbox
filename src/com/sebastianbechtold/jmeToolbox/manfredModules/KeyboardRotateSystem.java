@@ -7,6 +7,7 @@ import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.KeyTrigger;
 import com.sebastianbechtold.jmeToolbox.eventTypes.ManfredEntitySelected;
 import com.sebastianbechtold.jmeToolbox.manfredModules.components.RotateableFlagComponent;
+import com.sebastianbechtold.jmeToolbox.manfredModules.components.RotationCmp;
 
 public class KeyboardRotateSystem extends AbstractManfredJmeAppState {
 
